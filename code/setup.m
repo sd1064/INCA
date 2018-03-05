@@ -1,5 +1,13 @@
 data = readtable('sensor_readings_24.csv');
 
+% Is this setup correct ?
+training = 1;
+validation = 2728;
+test = 4092;
+final = size(data,1);
+
+% Data OK !
+
 % 1000 = 1 Move Forward
 % 0100 = 2 Slight right turn
 % 0010 = 3 Sharp right turn

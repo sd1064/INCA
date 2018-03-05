@@ -1,15 +1,23 @@
 clc;
 clear all;
+
 setup;
+% plotMatrix;
+pcaAnalysis;
 
-% TO DO
-%   - PCA 
-%   - Split up data 
-%   - Read paper
-%   - Different types of net 
+possibleNeuronSize =  20;
+timesRepeated      =   3;
+numLayers          =   3;
+stepSize           =   5;
 
-possibleNeuronSize = 20;
-possibleLayers     =  3;
-timesRepeated      = 10;
+% Regular MLP
+% output = patterNetRepeat(possibleNeuronSize ,numLayers ,timesRepeated , ... 
+%     stepSize ,inputData ,oneHotTarget , ...
+%     training,validation,test,final);
+% 
+% outputPCA = patterNetRepeat(possibleNeuronSize ,numLayers ,timesRepeated , ... 
+%     stepSize ,inputDataStdPCA ,oneHotTarget , ...
+%     training,validation,test,final);
 
-patterNetRepeat(possibleNeuronSize , possibleLayers , timesRepeated  , inputData , oneHotTarget);
+% Recurrent network
+% NAR
