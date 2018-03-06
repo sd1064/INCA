@@ -1,4 +1,4 @@
-function [ net , c] = patternNet(neurons,input,target,training,validation,test,final)
+function [net,c] = patternNet(neurons,input,target,training,validation,test,final)
 
 %  The default network for function fitting (or regression) problems, 
 %  patternnet, is a feedforward network with the default tan-sigmoid transfer function in the hidden layer, 

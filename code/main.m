@@ -5,19 +5,37 @@ setup;
 % plotMatrix;
 pcaAnalysis;
 
-possibleNeuronSize =  20;
-timesRepeated      =   3;
-numLayers          =   3;
-stepSize           =   5;
+possibleNeuronSize =   20;
+timesRepeated      =   10;
+numLayers          =    2;
+stepSize           =    3;
 
-% Regular MLP
-% outputMLP = patterNetRepeat(possibleNeuronSize ,numLayers ,timesRepeated , ... 
-%     stepSize ,inputData ,oneHotTarget , ...
-%     training,validation,test,final);
-% 
-% outputMLPPCA = patterNetRepeat(possibleNeuronSize ,numLayers ,timesRepeated , ... 
-%     stepSize ,inputDataStdPCA ,oneHotTarget , ...
-%     training,validation,test,final);
+feedbackDelaySize = 1:4; 
+inputDelaySize    = 1:4;
 
 % Recurrent network - NARX
-outputNarx = narxNet(1:4,1:4,10,inputData,oneHotTarget,training,validation,test,final );
+outputNARX = narxNexRepeat(inputDelaySize,feedbackDelaySize,possibleNeuronSize, ...
+    numLayers,timesRepeated,stepSize,inputData,oneHotTarget ...
+    ,training,validation,test,final);
+
+graphNARX = genErrorGraph(outputNARX);
+
+outputNARXPCA = narxNexRepeat(inputDelaySize,feedbackDelaySize,possibleNeuronSize, ...
+    numLayers,timesRepeated,stepSize,inputDataStdPCA,oneHotTarget ...
+    ,training,validation,test,final);
+
+graphNARXPCA = genErrorGraph(outputNARXPCA);
+
+% MLP
+outputMLP = patterNetRepeat(possibleNeuronSize ,numLayers ,timesRepeated , ... 
+    stepSize ,inputData ,oneHotTarget , ...
+    training,validation,test,final);
+
+graphMLP = genErrorGraph(outputMLP);
+
+
+outputMLPPCA = patterNetRepeat(possibleNeuronSize ,numLayers ,timesRepeated , ... 
+    stepSize ,inputDataStdPCA ,oneHotTarget , ...
+    training,validation,test,final);
+
+graphPCA = genErrorGraph(outputMLPPCA);
