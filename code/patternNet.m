@@ -15,26 +15,24 @@ function [ net , c] = patternNet(neurons,input,target,training,validation,test,f
     
     [net,tr] = train(net,input,target);
     
-    % figure;
-    % plotperform(tr);
-
     testInput = input(:,tr.testInd);
     testTarget = target(:,tr.testInd);
 
     testOutputs = net(testInput);
     testIndices = vec2ind(testOutputs);
     
-    % figure;
-    % plotconfusion(testTarget,testOutputs)
-
     [c,cm] = confusion(testTarget,testOutputs);
-
+    
     % fprintf('Percentage Correct Classification   : %f%%\n', 100*(1-c));
     % fprintf('Percentage Incorrect Classification : %f%%\n', 100*c);
     
     % figure;
     % plotroc(testTarget,testOutputs)
-
     
+    % figure;
+    % plotperform(tr);
+    
+    % figure;
+    % plotconfusion(testTarget,testOutputs)
 end
 
