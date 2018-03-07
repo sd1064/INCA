@@ -18,24 +18,15 @@ outputNARX = narxNexRepeat(inputDelaySize,feedbackDelaySize,possibleNeuronSize, 
     numLayers,timesRepeated,stepSize,inputData,oneHotTarget ...
     ,training,validation,test,final);
 
-graphNARX = genErrorGraph(outputNARX);
-
 outputNARXPCA = narxNexRepeat(inputDelaySize,feedbackDelaySize,possibleNeuronSize, ...
     numLayers,timesRepeated,stepSize,inputDataStdPCA,oneHotTarget ...
     ,training,validation,test,final);
-
-graphNARXPCA = genErrorGraph(outputNARXPCA);
 
 % MLP
 outputMLP = patterNetRepeat(possibleNeuronSize ,numLayers ,timesRepeated , ... 
     stepSize ,inputData ,oneHotTarget , ...
     training,validation,test,final);
 
-graphMLP = genErrorGraph(outputMLP);
-
-
 outputMLPPCA = patterNetRepeat(possibleNeuronSize ,numLayers ,timesRepeated , ... 
     stepSize ,inputDataStdPCA ,oneHotTarget , ...
     training,validation,test,final);
-
-graphPCA = genErrorGraph(outputMLPPCA);
