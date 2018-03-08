@@ -1,4 +1,4 @@
-function [net,c] = patternNet(neurons,input,target,training,validation,test,final)
+function [net,c] = patternNet(neurons,input,target,training,validation,test,final,trainingFunction)
 
 %  The default network for function fitting (or regression) problems, 
 %  patternnet, is a feedforward network with the default tan-sigmoid transfer function in the hidden layer, 
@@ -6,12 +6,17 @@ function [net,c] = patternNet(neurons,input,target,training,validation,test,fina
 %  You assigned ten neurons (somewhat arbitrary) to the one hidden layer in the previous section.
 
     net = patternnet(neurons);
+    
+    net.trainFcn = trainingFunction;
+    
     net.trainParam.showWindow = false;
     
     net.divideFcn = 'divideind';
     net.divideParam.trainInd = training:(validation-1);
     net.divideParam.valInd   = validation:(test-1);
     net.divideParam.testInd  = test:final;
+    
+
     
     [net,tr] = train(net,input,target);
     

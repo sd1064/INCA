@@ -1,6 +1,6 @@
 function [ outputArray ] = patterNetRepeat(possibleNeuronSize,numLayers, ...
     timesRepeated,stepSize,input,target ...
-    ,training,validation,test,final)
+    ,training,validation,test,final,trainingFunction)
 
     outputArray = [];
     combo = permn(0:stepSize:possibleNeuronSize,numLayers);
@@ -17,7 +17,7 @@ function [ outputArray ] = patterNetRepeat(possibleNeuronSize,numLayers, ...
             inputLayers = combo(neuronInd,:);
             inputLayers( inputLayers == 0 ) = [];
             
-            [ net , c] = patternNet(inputLayers,input,target,training,validation,test,final);
+            [ net , c] = patternNet(inputLayers,input,target,training,validation,test,final,trainingFunction);
             correct = [correct (100*(1-c))];
         end
         row = [combo(neuronInd,:) , correct , mean(correct) , std(correct)];

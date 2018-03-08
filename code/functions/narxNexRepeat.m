@@ -1,6 +1,6 @@
 function [ outputArray ] = narxNexRepeat(inputDelaySize,feedbackDelaySize,possibleNeuronSize, ...
     numLayers,timesRepeated,stepSize,input,target ...
-    ,training,validation,test,final)
+    ,training,validation,test,final,trainingFunction)
 
     outputArray = [];
     combo = permn(0:stepSize:possibleNeuronSize,numLayers);
@@ -18,7 +18,7 @@ function [ outputArray ] = narxNexRepeat(inputDelaySize,feedbackDelaySize,possib
             inputLayers( inputLayers == 0 ) = [];
             
             [ net , c] = narxNet(1:inputDelaySize,1:feedbackDelaySize,inputLayers, ...
-                            input,target,training,validation,test,final);
+                            input,target,training,validation,test,final,trainingFunction);
             
             correct = [correct (100*(1-c))];
         end

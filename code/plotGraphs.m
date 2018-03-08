@@ -5,8 +5,6 @@
 
 colourMatrix = [0, 0.4470, 0.7410 ; 0.8500, 0.3250, 0.0980;0.9290, 0.6940, 0.1250;0.6350, 0.0780, 0.1840];
 
-
-
 figure;gscatter(inputData(1,:),inputData(19,:),targetData.',colourMatrix,'o');
 axis equal;
 title('Graph of Class Values for the Left Sensor Against the Forward Sensor')
