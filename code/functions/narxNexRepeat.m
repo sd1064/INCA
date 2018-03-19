@@ -1,10 +1,11 @@
-function [ outputArray ] = narxNexRepeat(inputDelaySize,feedbackDelaySize,possibleNeuronSize, ...
-    numLayers,timesRepeated,stepSize,input,target ...
+function [ outputArray ] = narxNexRepeat(neuronArray,inputDelaySize,feedbackDelaySize, ...
+    numLayers,timesRepeated,input,target ...
     ,training,validation,test,final,trainingFunction)
 
     outputArray = [];
-    combo = permn(0:stepSize:possibleNeuronSize,numLayers);
-       
+    % combo = permn(0:stepSize:possibleNeuronSize,numLayers);
+    combo = permn(neuronArray,numLayers);
+    
     indicesFirst = find(combo(:,1)==0);
     combo(indicesFirst,:) = [];
     

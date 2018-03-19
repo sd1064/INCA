@@ -4,5 +4,5 @@ clear all;
 setup;
 % plotMatrix;
 pcaAnalysis;
-trainingFunctions;
+% trainingFunctions;
 bestNet;

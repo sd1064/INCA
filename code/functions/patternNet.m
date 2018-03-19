@@ -1,4 +1,4 @@
-function [net,c] = patternNet(neurons,input,target,training,validation,test,final,trainingFunction)
+function [net,c,avgTime] = patternNet(neurons,input,target,training,validation,test,final,trainingFunction)
 
 %  The default network for function fitting (or regression) problems, 
 %  patternnet, is a feedforward network with the default tan-sigmoid transfer function in the hidden layer, 
@@ -16,8 +16,6 @@ function [net,c] = patternNet(neurons,input,target,training,validation,test,fina
     net.divideParam.valInd   = validation:(test-1);
     net.divideParam.testInd  = test:final;
     
-
-    
     [net,tr] = train(net,input,target);
     
     testInput = input(:,tr.testInd);
@@ -27,6 +25,8 @@ function [net,c] = patternNet(neurons,input,target,training,validation,test,fina
     testIndices = vec2ind(testOutputs);
     
     [c,cm] = confusion(testTarget,testOutputs);
+    
+    avgTime = tr.time(size(tr.time,2));
     
     % fprintf('Percentage Correct Classification   : %f%%\n', 100*(1-c));
     % fprintf('Percentage Incorrect Classification : %f%%\n', 100*c);

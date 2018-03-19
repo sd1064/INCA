@@ -1,10 +1,12 @@
-function [ outputArray ] = patterNetRepeat(possibleNeuronSize,numLayers, ...
-    timesRepeated,stepSize,input,target ...
+function [ outputArray, timeArray] = patterNetRepeat(neuronArray,numLayers, ...
+    timesRepeated,input,target ...
     ,training,validation,test,final,trainingFunction)
 
     outputArray = [];
-    combo = permn(0:stepSize:possibleNeuronSize,numLayers);
-       
+    timeArray = [];
+%     combo = permn(0:stepSize:possibleNeuronSize,numLayers);
+    combo = permn(neuronArray,numLayers);
+    
     indicesFirst = find(combo(:,1)==0);
     combo(indicesFirst,:) = [];
     
@@ -12,18 +14,18 @@ function [ outputArray ] = patterNetRepeat(possibleNeuronSize,numLayers, ...
     
     for neuronInd = 1:length(combo)
         correct = [];
+        time = [];
         for neuron = 1:timesRepeated
-            
             inputLayers = combo(neuronInd,:);
             inputLayers( inputLayers == 0 ) = [];
-            
-            [ net , c] = patternNet(inputLayers,input,target,training,validation,test,final,trainingFunction);
+            [ net , c, timeStep] = patternNet(inputLayers,input,target,training,validation,test,final,trainingFunction);
             correct = [correct (100*(1-c))];
+            time = [time timeStep];
         end
-        row = [combo(neuronInd,:) , correct , mean(correct) , std(correct)];
+        row = [combo(neuronInd,:) , correct , mean(correct) , std(correct) ];
         outputArray = [outputArray ; row ];
+        timeArray = [ timeArray;  mean(time)];
         neuronInd
     end 
-    
 end
 

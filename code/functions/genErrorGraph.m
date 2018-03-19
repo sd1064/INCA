@@ -1,4 +1,4 @@
-function [ graph ] = genErrorGraph( inputArray,numLayers ,colour,title,yAxisLablel,xyAxisLablel )
+function [ graph ] = genErrorGraph( inputArray,numLayers ,colour,graphTitle,yAxisLablel,xAxisLablel )
 
     bigness = size(inputArray,2);
     
@@ -15,12 +15,15 @@ function [ graph ] = genErrorGraph( inputArray,numLayers ,colour,title,yAxisLabl
         xAxis = [ xAxis ; mat2str(display)];
     end
    
-    figure;
     graph = errorbar(1:size(inputArray,1),means,std);
-    set(gca,'XTick',1:20,'XTickLabel',xAxis)
+    set(gca,'XTick',1:size(xAxis,1),'XTickLabel',xAxis)
+    set(gca,'XTickLabelRotation',45);
     graph.Color = colour;
     grid on;
-    % Some way of displaying the Neural network layers - "Strings ?"
+    xlabel(xAxisLablel);
+    ylabel(yAxisLablel);
+    title(graphTitle);
+    ylim([0 100]);
     
 end
 

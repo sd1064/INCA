@@ -1,9 +1,7 @@
 function [ net,c ] = narxNet(inputDelays,feedbackDelays,hiddenLayerSize,input,target,training,validation,test,final,trainingFunction )
 
     net = narxnet(inputDelays,feedbackDelays,hiddenLayerSize);
-    
-        net.trainFcn = trainingFunction;
-    
+    net.trainFcn = trainingFunction;
     net.trainParam.showWindow = false;
     net.divideFcn = 'divideind';
     net.divideParam.trainInd = training:(validation-1);
