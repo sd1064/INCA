@@ -9,10 +9,16 @@ function [ outputArray ] = narxNexRepeat(neuronArray,inputDelaySize,feedbackDela
     indicesFirst = find(combo(:,1)==0);
     combo(indicesFirst,:) = [];
     
+    disp('Length');
+    disp(size(combo,1));
+    
     for neuronInd = 1:length(combo)
         correct = [];
+        disp('Neuron');
+        disp(combo(neuronInd,:));
         for neuron = 1:timesRepeated
-            
+            disp('Repeated');
+            disp(neuron);
             inputLayers = combo(neuronInd,:);
             inputLayers( inputLayers == 0 ) = [];
             

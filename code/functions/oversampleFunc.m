@@ -19,6 +19,8 @@ function [ oversampled ] = oversampleFunc( toOversample,sampleRate2,sampleRate4 
                     end
                     oversampledTemp = resample(toOversample(startOfBlock:(idx-1),:),sampleRate,1);
                     oversampledTemp = [oversampledTemp(:,1:24) round(oversampledTemp(:,25))];
+                    delId = or(oversampledTemp(:,25) == 0,oversampledTemp(:,25) == 1);
+                    oversampledTemp(delId,:) = [];          
                     oversampled = [oversampled;oversampledTemp];
                 end
             end
@@ -30,8 +32,7 @@ function [ oversampled ] = oversampleFunc( toOversample,sampleRate2,sampleRate4 
     fiveId = oversampled(:,25) == 5 ;
     oversampled(fiveId,25) = 4 ;
     
-    oneId = oversampled(:,25) == 0 ;
-    oversampled(oneId,25) = 1 ;
+
     
 end
 
