@@ -9,8 +9,6 @@ function [ outputArray ] = narxNexRepeat(neuronArray,inputDelaySize,feedbackDela
     indicesFirst = find(combo(:,1)==0);
     combo(indicesFirst,:) = [];
     
-    length(combo)
-    
     for neuronInd = 1:length(combo)
         correct = [];
         for neuron = 1:timesRepeated
@@ -25,7 +23,7 @@ function [ outputArray ] = narxNexRepeat(neuronArray,inputDelaySize,feedbackDela
         end
         row = [combo(neuronInd,:) , correct , mean(correct) , std(correct)];
         outputArray = [outputArray ; row ];
-        neuronInd
+%         neuronInd
     end 
     
 end

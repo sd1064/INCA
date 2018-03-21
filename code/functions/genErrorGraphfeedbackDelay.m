@@ -1,4 +1,4 @@
-function [ graph ] = genErrorGraph( inputArray,numLayers ,colour,graphTitle,yAxisLablel,xAxisLablel )
+function [ graph ] = genErrorGraphfeedbackDelay( inputArray,numLayers ,colour,graphTitle,yAxisLablel,xAxisLablel )
 
     bigness = size(inputArray,2);
     
@@ -6,18 +6,17 @@ function [ graph ] = genErrorGraph( inputArray,numLayers ,colour,graphTitle,yAxi
     means = means.';
     
     std = inputArray(:,bigness)
-    std   = std.';
+    std = std.';
 
     xAxis = {}
     for i=1:size(inputArray,1)
-        display = inputArray(i,1:numLayers);
-        display( :, all(~display,1) ) = [];
+        display = inputArray(i,1);
         xAxis = [ xAxis ; mat2str(display)];
     end
    
     graph = errorbar(1:size(inputArray,1),means,std);
     set(gca,'XTick',1:size(xAxis,1),'XTickLabel',xAxis)
-    set(gca,'XTickLabelRotation',45);
+%     set(gca,'XTickLabelRotation',45);
     graph.Color = colour;
     grid on;
     xlabel(xAxisLablel);
