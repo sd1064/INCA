@@ -3,6 +3,6 @@ clear all;
 
 setup;
 % plotMatrix;
-pcaAnalysis;
+% pcaAnalysis;
 % trainingFunctions;
 bestNet;

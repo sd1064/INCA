@@ -24,17 +24,17 @@ function [ net,c ] = narxNet(inputDelays,feedbackDelays,hiddenLayerSize,input,ta
     testIndices = vec2ind(testOutputs);
     
     [c,cm] = confusion(testTargets,testOutputs);
-
-    % fprintf('Percentage Correct Classification   : %f%%\n', 100*(1-c));
-    % fprintf('Percentage Incorrect Classification : %f%%\n', 100*c);
-    
-    % figure;
-    % plotroc(testTargets,testOutputs);
-    
-    % figure;
-    % plotperform(tr);
-    
-    % figure;
-    % plotconfusion(testTarget,testOutputs)
+        
+    fprintf('Percentage Correct Classification   : %f%%\n', 100*(1-c));
+    fprintf('Percentage Incorrect Classification : %f%%\n', 100*c);
+%     
+%     figure;
+%     plotroc(testTargets,testOutputs);
+%     
+%     figure;
+%     plotperform(tr);
+%     
+%     figure;
+%     plotconfusion(testTargets,testOutputs)
 end
 

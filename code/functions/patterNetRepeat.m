@@ -26,6 +26,7 @@ function [ outputArray, timeArray] = patterNetRepeat(neuronArray,numLayers, ...
         outputArray = [outputArray ; row ];
         timeArray = [ timeArray;  mean(time)];
         neuronInd
+        save('MLPnet','outputArray');
     end 
 end
 
