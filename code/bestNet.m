@@ -1,6 +1,6 @@
 % Finding best networkst test
 
-timesRepeated      =  10;
+timesRepeated      =  1;
 numLayers          =  1;
 neuronArray = [15];
 feedbackDelaySize = 4; 

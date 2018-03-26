@@ -1,8 +1,8 @@
-timesRepeated = 10;
+timesRepeated = 3;
 numLayers     =  1;
-neuronArray   = [25];
+neuronArray   = [15];
 trainingFunction = 'trainlm';
-sizes = [1 3 5 10 20];
+sizes = [0 1 2 4 8];
 output = [];
 
 for size=sizes
@@ -14,6 +14,6 @@ for size=sizes
     output = [output; size outputNARX];
 end
 
-figure;genErrorGraphfeedbackDelay( output,numLayers,[ 0.8500, 0.3250, 0.0980],'Recurrent Neural Network','Classification Accuracy (%)','Number of previous inputs and outputs to use' )
+figure;genErrorGraphfeedbackDelay( output,numLayers,[ 0.8500, 0.3250, 0.0980],'Recurrent Neural Network','Classification Accuracy (%)','Number of previous inputs and targets to use' )
 
 
